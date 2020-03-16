@@ -16,7 +16,7 @@ class CarsService {
     return axios(CarsService._withBaseUrl(`marcas/${idMarca}/modelos`));
   }
 
-  static getAnosModelo(idMarca = 59, idModelo = 5940){
+  static getAnos(idMarca = 59, idModelo = 5940){
     return axios(CarsService._withBaseUrl(`marcas/${idMarca}/modelos/${idModelo}/anos`));
   }
 

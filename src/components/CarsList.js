@@ -10,8 +10,10 @@ const CarsList = () => {
   const [marcas, setMarcas] = useState([{}])
   const [idMarca, setIdMarca] = useState(1)
   const [modelos, setModelos] = useState([{}])
-  const [anosModelo, setAnosModelo] = useState([{}])
-  /* const [carro, setCarro] = useState() */
+  const [idModelo, setIdModelo] = useState(1)
+  const [anos, setAnos] = useState([{}])
+  const [idAno, setIdAno] = useState(1)
+  const [carro, setCarro] = useState({})
 
   const requestMarcas = async () => {
     const result = await CarsServices.getMarcas()
@@ -23,58 +25,71 @@ const CarsList = () => {
     setModelos(result.data.modelos)
   }
 
-  const requestAnosModelo = async (idModelo) => {
-    const result = await CarsServices.getAnosModelo(idMarca, idModelo)
-    console.log(result.data)
-    setAnosModelo(result.data)
+  const requestAnos = async (idModelo) => {
+    const result = await CarsServices.getAnos(idMarca, idModelo)
+    setAnos(result.data)
   }
-  
-  /* 
+
   const requestCarro = async () => {
-    const result = await CarsServices.getCarro(59, 5940, "2014-3")
-    setCarro(result)
-  } */
+    const result = await CarsServices.getCarro(idMarca, idModelo, idAno)
+    setCarro(result.data)
+    console.log(carro)
+  }
 
   useEffect(() => {
     requestMarcas();
     requestModelos();
-    requestAnosModelo();
-   /*  requestCarro(); */
+    requestAnos();
+    requestCarro();
   }, [])
 
 
-  const getModelos = (idMarca) => {
+  const getModelosDaMarca = (idMarca) => {
     setIdMarca(idMarca)
     requestModelos(idMarca)
   }
 
-  const getAnosModelo = (idModelo) => {
-    requestAnosModelo(idModelo)
+  const getAnosDosModelos = (idModelo) => {
+    setIdModelo(idModelo)
+    requestAnos(idModelo)
   }
+
+  const getAno = (idAno) => {
+    setIdAno(idAno)
+  }
+
+  const getCarro = (e) => {
+    e.preventDefault()
+    requestCarro()
+  }
+
 
   return (
     <div>
-      <select onChange = {(e) => getModelos(e.target.value)}>
-        {marcas.map((marca) => {
-          return (
-            <option value={marca.codigo}>{marca.nome}</option>
-          )
-        })}
-      </select>
-      <select onChange = {(e) => getAnosModelo(e.target.value)}>
-        {modelos.map((modelo) => {
-          return (
-            <option value={modelo.codigo}>{modelo.nome}</option>
-          )
-        })}
-      </select>
-      <select>
-        {anosModelo.map((ano) => {
-          return (
-            <option value={ano.codigo}>{ano.nome}</option>
-          )
-        })}
-      </select>
+      <form>
+        <select onChange={(e) => getModelosDaMarca(e.target.value)}>
+          {marcas.map((marca) => {
+            return (
+              <option value={marca.codigo}>{marca.nome}</option>
+            )
+          })}
+        </select>
+        <select onChange={(e) => getAnosDosModelos(e.target.value)}>
+          {modelos.map((modelo) => {
+            return (
+              <option value={modelo.codigo}>{modelo.nome}</option>
+            )
+          })}
+        </select>
+        <select onChange={(e) => getAno(e.target.value)}>
+          {anos.map((ano) => {
+            return (
+              <option value={ano.codigo}>{ano.nome}</option>
+            )
+          })}
+        </select>
+        <button onClick = {(e) => getCarro(e)}>Procurar</button>
+      </form>
     </div>
   )
 };
