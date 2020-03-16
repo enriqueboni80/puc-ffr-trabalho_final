@@ -1,5 +1,5 @@
 import React from "react";
-import CarsList from "./components/CarsList";
+import CarsFilter from "./components/CarsFilter";
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route } from "react-router-dom"
 
@@ -10,7 +10,7 @@ export default function App() {
     <div className="App">
       <Provider store={store}>
         <BrowserRouter>
-          <Route exact path="/" component={CarsList} />
+          <Route exact path="/" component={CarsFilter} />
 {/*           <Route exact path="/movie/:movieID" component={MovieDetail} />
           <Route exact path="/favorites" component={MoviesFavorites} /> */}
         </BrowserRouter>

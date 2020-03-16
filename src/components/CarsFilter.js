@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
-/* import useMarcas from "./useMarcas"
-import useModelos from "./useModelos"
-import useAnosModelo from "./useAnosModelo"
-import useCarro from "./useCarro" */
-
 import CarsServices from "../services/CarsService"
 
-const CarsList = () => {
+const CarsFilter = () => {
   const [marcas, setMarcas] = useState([{}])
   const [idMarca, setIdMarca] = useState(1)
   const [modelos, setModelos] = useState([{}])
@@ -100,4 +95,4 @@ const CarsList = () => {
 };
 
 
-export default CarsList
+export default CarsFilter
