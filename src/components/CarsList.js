@@ -46,6 +46,7 @@ const CarsList = () => {
 
   const getModelosDaMarca = (idMarca) => {
     setAnos([])
+    setModelos([])
     setIdMarca(idMarca)
     requestModelos(idMarca)
   }
@@ -69,6 +70,7 @@ const CarsList = () => {
     <div>
       <form>
         <select onChange={(e) => getModelosDaMarca(e.target.value)}>
+        <option>--------------</option>
           {marcas.map((marca) => {
             return (
               <option value={marca.codigo}>{marca.nome}</option>
@@ -76,6 +78,7 @@ const CarsList = () => {
           })}
         </select>
         <select onChange={(e) => getAnosDosModelos(e.target.value)}>
+        <option>--------------</option>
           {modelos.map((modelo) => {
             return (
               <option value={modelo.codigo}>{modelo.nome}</option>
@@ -83,6 +86,7 @@ const CarsList = () => {
           })}
         </select>
         <select onChange={(e) => getAno(e.target.value)}>
+        <option>--------------</option>
           {anos.map((ano) => {
             return (
               <option value={ano.codigo}>{ano.nome}</option>
