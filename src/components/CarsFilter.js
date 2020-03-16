@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CarsServices from "../services/CarsService"
+import ShowCar from "./ShowCar"
 
 const CarsFilter = () => {
   const [marcas, setMarcas] = useState([{}])
@@ -28,7 +29,6 @@ const CarsFilter = () => {
   const requestCarro = async () => {
     const result = await CarsServices.getCarro(idMarca, idModelo, idAno)
     setCarro(result.data)
-    console.log(carro)
   }
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const CarsFilter = () => {
     <div>
       <form>
         <select onChange={(e) => getModelosDaMarca(e.target.value)}>
-        <option>--------------</option>
+          <option>--------------</option>
           {marcas.map((marca) => {
             return (
               <option value={marca.codigo}>{marca.nome}</option>
@@ -73,7 +73,7 @@ const CarsFilter = () => {
           })}
         </select>
         <select onChange={(e) => getAnosDosModelos(e.target.value)}>
-        <option>--------------</option>
+          <option>--------------</option>
           {modelos.map((modelo) => {
             return (
               <option value={modelo.codigo}>{modelo.nome}</option>
@@ -81,15 +81,16 @@ const CarsFilter = () => {
           })}
         </select>
         <select onChange={(e) => getAno(e.target.value)}>
-        <option>--------------</option>
+          <option>--------------</option>
           {anos.map((ano) => {
             return (
               <option value={ano.codigo}>{ano.nome}</option>
             )
           })}
         </select>
-        <button onClick = {(e) => getCarro(e)}>Procurar</button>
+        <button onClick={(e) => getCarro(e)}>Procurar</button>
       </form>
+      <ShowCar carro={carro} />
     </div>
   )
 };
