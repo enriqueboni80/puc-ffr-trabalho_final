@@ -12,11 +12,11 @@ class CarsService {
     return axios(CarsService._withBaseUrl("marcas"));
   }
 
-  static getModelos(idMarca = 1){
+  static getModelos(idMarca){
     return axios(CarsService._withBaseUrl(`marcas/${idMarca}/modelos`));
   }
 
-  static getAnos(idMarca = 59, idModelo = 5940){
+  static getAnos(idMarca, idModelo){
     return axios(CarsService._withBaseUrl(`marcas/${idMarca}/modelos/${idModelo}/anos`));
   }
 

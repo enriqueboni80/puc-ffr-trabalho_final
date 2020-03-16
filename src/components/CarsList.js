@@ -10,9 +10,9 @@ const CarsList = () => {
   const [marcas, setMarcas] = useState([{}])
   const [idMarca, setIdMarca] = useState(1)
   const [modelos, setModelos] = useState([{}])
-  const [idModelo, setIdModelo] = useState(1)
+  const [idModelo, setIdModelo] = useState()
   const [anos, setAnos] = useState([{}])
-  const [idAno, setIdAno] = useState(1)
+  const [idAno, setIdAno] = useState()
   const [carro, setCarro] = useState({})
 
   const requestMarcas = async () => {
@@ -45,6 +45,7 @@ const CarsList = () => {
 
 
   const getModelosDaMarca = (idMarca) => {
+    setAnos([])
     setIdMarca(idMarca)
     requestModelos(idMarca)
   }
