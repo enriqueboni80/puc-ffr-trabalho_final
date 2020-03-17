@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CarsServices from "../services/CarsService"
+import SelectForm from "./SelectForm"
 import ShowCar from "./ShowCar"
 
 const CarsFilter = () => {
@@ -38,15 +39,15 @@ const CarsFilter = () => {
     requestCarro();
   }, [])
 
-
   const getModelosDaMarca = (idMarca) => {
-    setAnos([])
     setModelos([])
+    setAnos([])
     setIdMarca(idMarca)
     requestModelos(idMarca)
   }
 
   const getAnosDosModelos = (idModelo) => {
+    setAnos([])
     setIdModelo(idModelo)
     requestAnos(idModelo)
   }
@@ -60,36 +61,17 @@ const CarsFilter = () => {
     requestCarro()
   }
 
-
   return (
     <div>
-      <form>
-        <select onChange={(e) => getModelosDaMarca(e.target.value)}>
-          <option>--------------</option>
-          {marcas.map((marca) => {
-            return (
-              <option value={marca.codigo}>{marca.nome}</option>
-            )
-          })}
-        </select>
-        <select onChange={(e) => getAnosDosModelos(e.target.value)}>
-          <option>--------------</option>
-          {modelos.map((modelo) => {
-            return (
-              <option value={modelo.codigo}>{modelo.nome}</option>
-            )
-          })}
-        </select>
-        <select onChange={(e) => getAno(e.target.value)}>
-          <option>--------------</option>
-          {anos.map((ano) => {
-            return (
-              <option value={ano.codigo}>{ano.nome}</option>
-            )
-          })}
-        </select>
-        <button onClick={(e) => getCarro(e)}>Procurar</button>
-      </form>
+      <SelectForm
+      getModelosDaMarca = {(e) => getModelosDaMarca(e.target.value)}
+      marcas = {marcas}
+      getAnosDosModelos = {(e) => getAnosDosModelos(e.target.value)}
+      modelos = {modelos}
+      getAno = {(e) => getAno(e.target.value)}
+      anos = {anos}
+      getCarro ={(e) => getCarro(e)}
+      />
       <ShowCar carro={carro} />
     </div>
   )
