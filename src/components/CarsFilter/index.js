@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import CarsServices from "../services/CarsService"
-import SelectForm from "./SelectForm"
-import ShowCar from "./ShowCar"
+import CarsServices from "../../services/CarsService"
+import SelectField from "./selectField"
+import ShowCar from "./showCar"
 
-const CarsFilter = () => {
+const Index = () => {
   const [marcas, setMarcas] = useState([{}])
   const [idMarca, setIdMarca] = useState(1)
   const [modelos, setModelos] = useState([{}])
@@ -63,19 +63,15 @@ const CarsFilter = () => {
 
   return (
     <div>
-      <SelectForm
-      getModelosDaMarca = {(e) => getModelosDaMarca(e.target.value)}
-      marcas = {marcas}
-      getAnosDosModelos = {(e) => getAnosDosModelos(e.target.value)}
-      modelos = {modelos}
-      getAno = {(e) => getAno(e.target.value)}
-      anos = {anos}
-      getCarro ={(e) => getCarro(e)}
-      />
+      <form>
+        <SelectField funcao={(e) => getModelosDaMarca(e.target.value)} array={marcas} />
+        <SelectField funcao={(e) => getAnosDosModelos(e.target.value)} array={modelos} />
+        <SelectField funcao={(e) => getAno(e.target.value)} array={anos} />
+        <button onClick={(e) => getCarro(e)}>Procurar</button>
+      </form>
       <ShowCar carro={carro} />
     </div>
   )
 };
 
-
-export default CarsFilter
+export default Index

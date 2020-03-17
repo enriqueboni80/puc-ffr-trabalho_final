@@ -11,8 +11,6 @@ export default function App() {
       <Provider store={store}>
         <BrowserRouter>
           <Route exact path="/" component={CarsFilter} />
-{/*           <Route exact path="/movie/:movieID" component={MovieDetail} />
-          <Route exact path="/favorites" component={MoviesFavorites} /> */}
         </BrowserRouter>
       </Provider>
     </div>
