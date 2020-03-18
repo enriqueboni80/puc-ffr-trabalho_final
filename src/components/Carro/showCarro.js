@@ -1,6 +1,6 @@
 import React from "react"
 
-const ShowCar = (props) => {
+const ShowCarro = (props) => {
     var carro = props.carro
     console.log(carro)
     return (
@@ -15,4 +15,4 @@ const ShowCar = (props) => {
     )
 }
 
-export default ShowCar
+export default ShowCarro

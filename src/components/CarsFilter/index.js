@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CarsServices from "../../services/CarsService"
 import SelectField from "./selectField"
-import ShowCar from "./showCar"
+import ShowCarro from "./showCarro"
 
 const Index = () => {
   const [marcas, setMarcas] = useState([{}])
@@ -69,7 +69,7 @@ const Index = () => {
         <SelectField funcao={(e) => getAno(e.target.value)} array={anos} />
         <button onClick={(e) => getCarro(e)}>Procurar</button>
       </form>
-      <ShowCar carro={carro} />
+      <ShowCarro carro={carro} />
     </div>
   )
 };
