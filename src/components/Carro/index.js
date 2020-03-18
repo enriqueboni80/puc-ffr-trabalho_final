@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import useCarro from "./useCarro"
-import ShowCarro from "./showCarro"
+import CarroPresentation from "./CarroPresentation"
 
 const Index = (props) => {
     const idMarca = props.match.params.IdMarca
@@ -8,7 +8,7 @@ const Index = (props) => {
     const idAno = props.match.params.IdAno
     const carro = useCarro(idMarca, idModelo, idAno)
     return (
-        <ShowCarro carro={carro} />
+        <CarroPresentation carro={carro} />
     )
 }
 

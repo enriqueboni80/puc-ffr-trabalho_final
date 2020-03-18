@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-const ShowMarcas = (props) => {
+const MarcasPresentation = (props) => {
     var marcas = props.marcas
     return (
         <div>
@@ -14,4 +14,4 @@ const ShowMarcas = (props) => {
     )
 }
 
-export default ShowMarcas
+export default MarcasPresentation
