@@ -5,67 +5,73 @@ const useMarcas = () => {
 
     const [marcas, setMarcas] = useState([{}])
 
-    /* const requestMarcas = async () => {
-        const result = await CarsServices.getMarcas()
-        setMarcas(result.data)
-    } */
-
-    const marcasImages = [
-        { id: "1", path: "https://www.carlogos.org/logo/Ferrari-logo.png" }
-    ]
-
     const requestMarcas = async () => {
-        var arraySemImagens = []
         const result = await CarsServices.getMarcas()
-        arraySemImagens = result.data
-        var arrayComimagens = []
-        arraySemImagens.map((marca, index) => {
-            marcasImages.forEach(imagens => {
-                if (marca.codigo == imagens.id) {
-                    arrayComimagens[index] = { ...arraySemImagens[index], path: "wwww.terra.com.br" }
-                } else {
-                    arrayComimagens[index] = arraySemImagens[index]
-                }
-            });
-        });
-        setMarcas(arrayComimagens)
+        var marcasComImagens = concatArrayImagens(result.data)
+        setMarcas(marcasComImagens)
     }
-
 
     useEffect(() => {
         requestMarcas();
     }, [])
 
+    return marcas
+}
 
-
-
-
-    /* var arrayComimagens = []
-    marcas.map((marca, index) => {
+const concatArrayImagens = (arrayDeMarcas) => {
+    const marcasImages = getMarcasImages()
+    arrayDeMarcas.map((marca, index) => {
         marcasImages.forEach(imagens => {
-            if (marca.codigo == imagens.id) {
-                arrayComimagens[index] = { ...marcas[index], path: "wwww.terra.com.br" }
-            } else {
-                arrayComimagens[index] = marcas[index]
+            if (marca.codigo == imagens.codigo) {
+                arrayDeMarcas[index] = { ...arrayDeMarcas[index], path_img: imagens.path_img }
             }
         });
-    }); */
-    /* console.log(arrayComimagens) */
-
-
-
-    /* var arrayComimagens = []
-    marcas.map((marca, index) => {
-        if(marca.codigo == 2){
-            arrayComimagens[index] = {...marcas[index], path:"wwww.terra.com.br"}
-        }else{
-            arrayComimagens[index] = marcas[index]
-        }
     });
-    console.log(arrayComimagens) */
-    console.log(marcas)
-    return marcas
+    console.log(arrayDeMarcas)
+    return arrayDeMarcas
+}
 
+const getMarcasImages = () => {
+    return [
+        { codigo: "1", path_img: "https://www.carlogos.org/logo/Acura-logo.png" },
+        { codigo: "2", path_img: "" },
+        { codigo: "56", path_img: "https://www.carlogos.org/logo/Toyota-logo.png" },
+        { codigo: "59", path_img: "https://www.carlogos.org/logo/Volkswagen-logo.png" },
+        { codigo: "39", path_img: "https://www.carlogos.org/logo/Mercedes-Benz-logo.png" },
+        { codigo: "32", path_img: "https://www.carlogos.org/logo/General-Motors-logo.png" },
+        { codigo: "22", path_img: "https://www.carlogos.org/logo/Ford-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+        { codigo: "3", path_img: "https://www.carlogos.org/logo/Ferrari-logo.png" },
+    ]
 }
 
 export default useMarcas

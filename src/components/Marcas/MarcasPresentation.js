@@ -10,7 +10,11 @@ const MarcasPresentation = (props) => {
                 {marcas.map((marca) => {
                     return (
                         <div class="col-sm-3 marca-container">
-                            <Link to={`/marcas/${marca.codigo}/modelos`}><div className="marca-card">{marca.nome}</div>
+                            <Link to={`/marcas/${marca.codigo}/modelos`}>
+                                <div className="marca-card">
+                                    <img src={marca.path_img} />
+                                    <p>{marca.nome}</p>
+                                </div>
                             </Link>
                         </div>
                     )
