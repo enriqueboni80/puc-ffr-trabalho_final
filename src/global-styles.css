@@ -1,6 +1,6 @@
 body {
   margin: 0px;
-  background-color: #f2f2f2;
+  background-color:white;
 }
 
 .App {
@@ -9,5 +9,10 @@ body {
 }
 
 a {
+  text-decoration:none;
+  color:black
+}
+
+a:hover {
   text-decoration:none;
 }

@@ -17,9 +17,8 @@ export default function App() {
       <Provider store={store}>
         <BrowserRouter>
         <Header / >
-          <Route exact path="/" component={CarsFilter} />
+          <Route exact path="/" component={Marcas} />
           <Route exact path="/filtro" component={CarsFilter} />
-          <Route exact path="/marcas" component={Marcas} />
           <Route exact path="/marcas/:IdMarca/modelos/" component={Modelos} />
           <Route exact path="/marcas/:IdMarca/modelos/:IdModelo/anos" component={AnosModelos} />
           <Route exact path="/marcas/:IdMarca/modelos/:IdModelo/anos/:IdAno" component={Carro} />
