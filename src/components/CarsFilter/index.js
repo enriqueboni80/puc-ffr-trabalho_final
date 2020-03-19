@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CarsServices from "../../services/CarsService"
+import { Link } from "react-router-dom"
 import SelectField from "./selectField"
 import CarroPresentation from "./CarroPresentation"
 import "./carsfilter.css"
@@ -63,14 +64,21 @@ const Index = () => {
   }
 
   return (
-    <div className="carsfilter-container">
-        <SelectField funcao={(e) => getModelosDaMarca(e.target.value)} array={marcas} />
-        <SelectField funcao={(e) => getAnosDosModelos(e.target.value)} array={modelos} />
-        <SelectField funcao={(e) => getAno(e.target.value)} array={anos} />
-        <button class="btn btn-primary" onClick={(e) => getCarro(e)}>Procurar</button>
-        <br /><br />
+    <>
+      <div className="carsfilter-container">
+        <form>
+          <header>Selecione o Modelo</header>
+          <main>
+            <SelectField funcao={(e) => getModelosDaMarca(e.target.value)} array={marcas} />
+            <SelectField funcao={(e) => getAnosDosModelos(e.target.value)} array={modelos} />
+            <SelectField funcao={(e) => getAno(e.target.value)} array={anos} />
+            {/* <button class="btn btn-primary col-md-12" onClick={(e) => getCarro(e)}>Procurar</button> */}
+            <Link to={`/marcas/${idMarca}/modelos/${idModelo}/anos/${idAno}`} class="btn btn-primary col-md-12" >Procurar</Link>
+          </main>
+        </form>
+      </div>
       <CarroPresentation carro={carro} />
-    </div>
+    </>
   )
 };
 
