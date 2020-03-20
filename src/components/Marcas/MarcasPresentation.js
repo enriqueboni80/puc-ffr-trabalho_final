@@ -5,25 +5,24 @@ import "./marcas.css"
 const MarcasPresentation = (props) => {
     var marcas = props.marcas
     return (
-        <div className="marcas-container">
-            <div class="title">PRINCIPAIS MARCAS</div>
-            <div class="row">
-                {marcas.map((marca) => {
-                    if (marca.path_img) {
-                        return (
-                            <div class="marca-container">
-                                <Link to={`/marcas/${marca.codigo}/modelos`}>
-                                    <div className="marca-card">
-                                        <img src={marca.path_img} />
-                                        <p>{marca.nome}</p>
+        <div class="row text-center">
+            {marcas.map((marca) => {
+                if (marca.path_img) {
+                    return (
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <Link to={`/marcas/${marca.codigo}/modelos`}>
+                                <div class="card h-100">
+                                    <img class="card-img-top" src={marca.path_img} alt="" />
+                                    <div class="card-body">
+                                        <p class="card-text">{marca.nome}</p>
                                     </div>
-                                </Link>
-                            </div>
-                        )
-                    }
+                                </div>
+                            </Link>
 
-                })}
-            </div>
+                        </div>
+                    )
+                }
+            })}
         </div>
     )
 }
