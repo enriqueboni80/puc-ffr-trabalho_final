@@ -2,7 +2,6 @@ import React from "react"
 
 const CarroPresentation = (props) => {
     var carro = props.carro
-    console.log(carro)
     return (
         <div>
             {carro.Marca}<br />

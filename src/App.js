@@ -4,9 +4,9 @@ import Marcas from "./components/Marcas"
 import Modelos from "./components/Modelos"
 import AnosModelos from "./components/AnosModelos"
 import Carro from "./components/Carro"
-import Header from "./components/Header"
 import Nav from "./components/Nav"
 import Footer from "./components/Footer"
+import "./global-styles.css"
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route } from "react-router-dom"
 
@@ -19,7 +19,6 @@ export default function App() {
         <BrowserRouter>
           <div class="container">
             <Nav />
-            <Header />
             <Route exact path="/" component={Marcas} />
             <Route exact path="/filtro" component={CarsFilter} />
             <Route exact path="/marcas/:IdMarca/modelos/" component={Modelos} />

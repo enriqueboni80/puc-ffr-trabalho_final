@@ -65,19 +65,17 @@ const Index = () => {
 
   return (
     <>
-      <div className="carsfilter-container">
+      <div class="text-center carsfilter-container">
         <form>
           <header>Selecione o Modelo</header>
-          <main>
             <SelectField funcao={(e) => getModelosDaMarca(e.target.value)} array={marcas} />
             <SelectField funcao={(e) => getAnosDosModelos(e.target.value)} array={modelos} />
             <SelectField funcao={(e) => getAno(e.target.value)} array={anos} />
             {/* <button class="btn btn-primary col-md-12" onClick={(e) => getCarro(e)}>Procurar</button> */}
             <Link to={`/marcas/${idMarca}/modelos/${idModelo}/anos/${idAno}`} class="btn btn-primary col-md-12" >Procurar</Link>
-          </main>
         </form>
       </div>
-      <CarroPresentation carro={carro} />
+      {/* <CarroPresentation carro={carro} /> */}
     </>
   )
 };
