@@ -16,7 +16,7 @@ const Index = () => {
                     color: "yellow",
                     fontWeight: "bold"
                 }}>
-                Quanto custa seu veículo?</h1>
+                Quanto R$ seu carro?</h1>
             <p class="lead"
                 style={{
                     color: "white"
