@@ -6,7 +6,7 @@ const ModelosPresentation = (props) => {
     var modelos = props.modelos
     return (
         <div class="row text-center" style={{ marginTop: "25px" }}>
-            <table class="table table-striped table-bordered" style={{ border: "1px solid black" }}>
+            <table class="table table-striped table-bordered table-hover" style={{ border: "1px solid black" }}>
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -15,10 +15,11 @@ const ModelosPresentation = (props) => {
                 </thead>
                 <tbody>
                     {modelos.map((modelo, key) => {
+                        let toUrl = `/marcas/${idMarca}/modelos/${modelo.codigo}/anos`
                         return (
-                            <tr>
+                            <tr style={{cursor:"pointer"}} onClick={() => window.location.href = toUrl}>
                                 <td>{key + 1}</td>
-                                <td><Link to={`/marcas/${idMarca}/modelos/${modelo.codigo}/anos`}>{modelo.nome}</Link></td>
+                                <td><Link to={toUrl}>{modelo.nome}</Link></td>
                             </tr>
                         )
                     })}
