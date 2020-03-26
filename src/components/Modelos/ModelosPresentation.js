@@ -1,11 +1,16 @@
 import React from "react"
+import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 
 const ModelosPresentation = (props) => {
     var idMarca = props.idMarca
     var modelos = props.modelos
+    const marca = useSelector(state => state.marca)
+    console.log(marca)
+
     return (
         <div class="row text-center" style={{ marginTop: "25px" }}>
+            <img src={marca.path_img} />
             <table class="table table-striped table-bordered table-hover" style={{ border: "1px solid black" }}>
                 <thead>
                     <tr>
