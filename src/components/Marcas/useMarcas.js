@@ -1,21 +1,28 @@
 import React, { useState, useEffect } from "react";
 import CarsServices from "../../services/CarsService"
 
-const useMarcas = () => {
-
+const useMarcas = (idMarca = null) => {
     const [marcas, setMarcas] = useState([{}])
-
     const requestMarcas = async () => {
         const result = await CarsServices.getMarcas()
         var marcasComImagens = concatArrayImagens(result.data)
-        setMarcas(marcasComImagens)
+        if (idMarca) {
+            marcasComImagens.map((marca) => {
+                if (marca.codigo == idMarca) {
+                    setMarcas(marca)
+                }
+            })
+        }
+        else {
+            setMarcas(marcasComImagens)
+        }
     }
-
     useEffect(() => {
         requestMarcas();
     }, [])
 
     return marcas
+
 }
 
 const concatArrayImagens = (arrayDeMarcas) => {
@@ -27,7 +34,6 @@ const concatArrayImagens = (arrayDeMarcas) => {
             }
         });
     });
-    console.log(arrayDeMarcas)
     return arrayDeMarcas
 }
 

@@ -5,12 +5,12 @@ import { Link } from "react-router-dom"
 const ModelosPresentation = (props) => {
     var idMarca = props.idMarca
     var modelos = props.modelos
-    const marca = useSelector(state => state.marca)
-    console.log(marca)
+    var marca = props.marca
+    /* const marca = useSelector(state => state.marca) */
 
     return (
         <div class="row text-center" style={{ marginTop: "25px" }}>
-            <img src={marca.path_img} />
+            <img src={marca.path_img} /><p>{marca.nome}</p>
             <table class="table table-striped table-bordered table-hover" style={{ border: "1px solid black" }}>
                 <thead>
                     <tr>
@@ -22,7 +22,7 @@ const ModelosPresentation = (props) => {
                     {modelos.map((modelo, key) => {
                         let toUrl = `/marcas/${idMarca}/modelos/${modelo.codigo}/anos`
                         return (
-                            <tr style={{cursor:"pointer"}} onClick={() => window.location.href = toUrl}>
+                            <tr style={{ cursor: "pointer" }} onClick={() => window.location.href = toUrl}>
                                 <td>{key + 1}</td>
                                 <td><Link to={toUrl}>{modelo.nome}</Link></td>
                             </tr>
