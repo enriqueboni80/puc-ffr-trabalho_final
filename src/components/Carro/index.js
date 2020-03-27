@@ -8,11 +8,10 @@ const Index = (props) => {
     const idModelo = props.match.params.IdModelo
     const idAno = props.match.params.IdAno
     const carro = useCarro(idMarca, idModelo, idAno)
-    const marca = useMarcas(null, carro.Marca)
-    console.log(marca)
+    const marca = useMarcas(idMarca)
 
     return (
-        <CarroPresentation carro={carro} />
+        <CarroPresentation carro={carro} marca={marca} />
     )
 }
 

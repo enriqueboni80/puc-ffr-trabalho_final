@@ -9,7 +9,11 @@ const AnosModelosPresentation = (props) => {
     var modelo = props.modelo
     return (
         <div class="row text-center" style={{ marginTop: "25px" }}>
-            <img src={marca.path_img} /><p>{marca.nome} => {modelo.nome}</p>
+            <div class="row slug-header">
+                <div class="col-lg-2 col-md-4 col-sm-4 logo"><img src={marca.path_img} /></div>
+                <div class="col-lg-6 col-md-4 com-sm-4 title">{marca.nome}</div>
+                <div class="col-lg-4 col-md-4 com-sm-4 content">{modelo.nome}</div>
+            </div>
             <table class="table table-striped table-bordered table-hover" style={{ border: "1px solid black" }}>
                 <thead>
                     <tr>

@@ -17,8 +17,8 @@ export default function App() {
     <div className="App">
       <Provider store={store}>
         <BrowserRouter>
+          <Nav />
           <div class="container">
-            <Nav />
             <Route exact path="/" component={Marcas} />
             <Route exact path="/marcas" component={Marcas} />
             <Route exact path="/filtro" component={CarsFilter} />
