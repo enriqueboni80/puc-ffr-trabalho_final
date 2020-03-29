@@ -68,9 +68,9 @@ const Index = () => {
 
   return (
     <>
-      <div class="text-center carsfilter-container">
-        {!loading ? <Spinner />
-          :
+      {!loading ? <Spinner />
+        :
+        <div class="text-center carsfilter-container">
           <form>
             <header>Selecione o Modelo</header>
             <SelectField funcao={(e) => getModelosDaMarca(e.target.value)} array={marcas} />
@@ -79,8 +79,8 @@ const Index = () => {
             {/* <button class="btn btn-primary col-md-12" onClick={(e) => getCarro(e)}>Procurar</button> */}
             <Link to={`/marcas/${idMarca}/modelos/${idModelo}/anos/${idAno}`} class="btn btn-primary col-md-12" >Procurar</Link>
           </form>
-        }
-      </div>
+        </div>
+      }
       {/* <CarroPresentation carro={carro} /> */}
     </>
   )

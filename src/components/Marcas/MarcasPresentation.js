@@ -20,8 +20,8 @@ const MarcasPresentation = (props) => {
     return (
         <>
             <Banner />
+            {!loading ? <Spinner /> : ""}
             <div class="row text-center">
-                {!loading ? <Spinner /> : ""}
                 {marcas.map((marca) => {
                     if (marca.path_img) {
                         return (
