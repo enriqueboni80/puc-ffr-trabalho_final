@@ -10,8 +10,20 @@ const Index = (props) => {
     const marca = useMarcas(idMarca)
     const modelo = useModelos(idMarca, idModelo)
     const anosModelos = useAnosModelos(idMarca, idModelo)
+    const [loading, setLoading] = useState(false)
+
+    const verificaSeCarregouArray = () => {
+        if (!(Array.isArray(marca) && Array.isArray(modelo) && Array.isArray(anosModelos))) {
+            setLoading(true)
+        }
+    }
+
+    useEffect(() => {
+        verificaSeCarregouArray();
+    }, [verificaSeCarregouArray])
+
     return (
-        <AnosModelosPresentation anosModelos={anosModelos} idMarca={idMarca} idModelo={idModelo} marca={marca} modelo={modelo} />
+        <AnosModelosPresentation anosModelos={anosModelos} idMarca={idMarca} idModelo={idModelo} marca={marca} modelo={modelo} loading={loading} />
     )
 }
 

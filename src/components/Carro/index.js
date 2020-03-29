@@ -9,9 +9,20 @@ const Index = (props) => {
     const idAno = props.match.params.IdAno
     const carro = useCarro(idMarca, idModelo, idAno)
     const marca = useMarcas(idMarca)
+    const [loading, setLoading] = useState(false)
+
+    const verificaSeCarregouArray = () => {
+        if (!(Array.isArray(marca) && Array.isArray(carro))) {
+            setLoading(true)
+        }
+    }
+
+    useEffect(() => {
+        verificaSeCarregouArray();
+    }, [verificaSeCarregouArray])
 
     return (
-        <CarroPresentation carro={carro} marca={marca} />
+        <CarroPresentation carro={carro} marca={marca} loading={loading} />
     )
 }
 

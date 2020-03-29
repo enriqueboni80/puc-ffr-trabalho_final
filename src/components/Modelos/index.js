@@ -6,10 +6,21 @@ import ModelosPresentation from "./ModelosPresentation"
 const Index = (props) => {
     const idMarca = props.match.params.IdMarca
     const marca = useMarcas(idMarca)
+    const [loading, setLoading] = useState(false)
+
+    const verificaSeCarregouArray = () => {
+        if (!Array.isArray(marca)) {
+            setLoading(true)
+        }
+    }
+
+    useEffect(() => {
+        verificaSeCarregouArray();
+    }, [verificaSeCarregouArray])
 
     const modelos = useModelos(idMarca)
     return (
-        <ModelosPresentation modelos={modelos} idMarca={idMarca} marca={marca} />
+        <ModelosPresentation modelos={modelos} idMarca={idMarca} marca={marca} loading={loading} />
     )
 }
 

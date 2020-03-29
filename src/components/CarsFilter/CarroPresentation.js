@@ -1,3 +1,4 @@
+/* PRESENTATION DESATIVADA */
 import React from "react"
 
 const CarroPresentation = (props) => {

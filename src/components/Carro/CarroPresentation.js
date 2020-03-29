@@ -1,9 +1,12 @@
 import React from "react"
+import Spinner from "../Utils/spinner"
+
 
 const CarroPresentation = (props) => {
     var carro = props.carro
     var marca = props.marca
-    console.log(carro)
+    var loading = props.loading
+
     return (
         <>
             <div class="row text-center" style={{ marginTop: "25px" }}>
@@ -13,16 +16,22 @@ const CarroPresentation = (props) => {
                     <div class="col-lg-4 col-md-4 com-sm-4 content">{carro.Modelo} ({carro.AnoModelo})</div>
                 </div>
             </div>
-            <div class="row carro-presentation-container">
-                <div class="carro-presentation-board">
-                    <div class="valor">{carro.Valor}</div>
-                    <div><b>Modelo:</b> {carro.Modelo} ({carro.Marca})</div>
-                    <div><b>Ano:</b> {carro.AnoModelo}</div>
-                    <div><b>Combustível:</b> {carro.Combustivel}</div>
-                    <div><b>Código Fipe:</b> {carro.CodigoFipe}</div>
-                    <div><b>Mês de Referência:</b> {carro.MesReferencia}</div>
-                </div>
+
+            <div class="row text-center carro-presentation-container">
+                {!loading ? <Spinner />
+                    :
+                    <div class="carro-presentation-board">
+                        <div class="valor">{carro.Valor}</div>
+                        <div><b>Modelo:</b> {carro.Modelo} ({carro.Marca})</div>
+                        <div><b>Ano:</b> {carro.AnoModelo}</div>
+                        <div><b>Combustível:</b> {carro.Combustivel}</div>
+                        <div><b>Código Fipe:</b> {carro.CodigoFipe}</div>
+                        <div><b>Mês de Referência:</b> {carro.MesReferencia}</div>
+                    </div>
+                }
             </div>
+
+
         </>
     )
 }

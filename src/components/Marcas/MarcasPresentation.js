@@ -2,8 +2,12 @@ import React from "react"
 import { useDispatch } from 'react-redux'
 import { Link } from "react-router-dom"
 import Banner from "../../components/Banner"
+import Spinner from "../Utils/spinner"
 
 const MarcasPresentation = (props) => {
+
+    var loading = props.loading
+    var marcas = props.marcas
 
     const dispatch = useDispatch();
     const guardarStatus = (marca) => {
@@ -13,11 +17,11 @@ const MarcasPresentation = (props) => {
         })
     }
 
-    var marcas = props.marcas
     return (
         <>
             <Banner />
             <div class="row text-center">
+                {!loading ? <Spinner /> : ""}
                 {marcas.map((marca) => {
                     if (marca.path_img) {
                         return (
@@ -30,7 +34,6 @@ const MarcasPresentation = (props) => {
                                         </div>
                                     </div>
                                 </Link>
-
                             </div>
                         )
                     }

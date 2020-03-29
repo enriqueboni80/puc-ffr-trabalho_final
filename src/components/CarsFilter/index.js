@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import CarsServices from "../../services/CarsService"
 import { Link } from "react-router-dom"
 import SelectField from "./selectField"
-import CarroPresentation from "./CarroPresentation"
+import Spinner from "../Utils/spinner"
 import "./carsfilter.css"
 
 const Index = () => {
@@ -13,10 +13,12 @@ const Index = () => {
   const [anos, setAnos] = useState([{}])
   const [idAno, setIdAno] = useState()
   const [carro, setCarro] = useState({})
+  const [loading, setLoading] = useState(false)
 
   const requestMarcas = async () => {
     const result = await CarsServices.getMarcas()
     setMarcas(result.data)
+    setLoading(true)
   }
 
   const requestModelos = async (idMarca) => {
@@ -63,17 +65,21 @@ const Index = () => {
     requestCarro()
   }
 
+
   return (
     <>
       <div class="text-center carsfilter-container">
-        <form>
-          <header>Selecione o Modelo</header>
+        {!loading ? <Spinner />
+          :
+          <form>
+            <header>Selecione o Modelo</header>
             <SelectField funcao={(e) => getModelosDaMarca(e.target.value)} array={marcas} />
             <SelectField funcao={(e) => getAnosDosModelos(e.target.value)} array={modelos} />
             <SelectField funcao={(e) => getAno(e.target.value)} array={anos} />
             {/* <button class="btn btn-primary col-md-12" onClick={(e) => getCarro(e)}>Procurar</button> */}
             <Link to={`/marcas/${idMarca}/modelos/${idModelo}/anos/${idAno}`} class="btn btn-primary col-md-12" >Procurar</Link>
-        </form>
+          </form>
+        }
       </div>
       {/* <CarroPresentation carro={carro} /> */}
     </>
