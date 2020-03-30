@@ -4,6 +4,7 @@ import Marcas from "./components/Marcas"
 import Modelos from "./components/Modelos"
 import AnosModelos from "./components/AnosModelos"
 import Carro from "./components/Carro"
+import CarrosFavoritos from "./components/CarrosFavoritos"
 import Nav from "./components/Nav"
 import Footer from "./components/Footer"
 import "./global-styles.css"
@@ -24,6 +25,7 @@ export default function App() {
               <Route exact path="/" component={Marcas} />
               <Route exact path="/marcas" component={Marcas} />
               <Route exact path="/filtro" component={CarsFilter} />
+              <Route exact path="/carrosFavoritos" component={CarrosFavoritos} />
               <Route exact path="/marcas/:IdMarca/modelos/" component={Modelos} />
               <Route exact path="/marcas/:IdMarca/modelos/:IdModelo/anos" component={AnosModelos} />
               <Route exact path="/marcas/:IdMarca/modelos/:IdModelo/anos/:IdAno" component={Carro} />

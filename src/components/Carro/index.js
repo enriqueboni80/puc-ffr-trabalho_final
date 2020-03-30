@@ -3,7 +3,6 @@ import useCarro from "./useCarro"
 import useMarcas from "../Marcas/useMarcas"
 import CarroPresentation from "./CarroPresentation"
 import { useDispatch, useSelector } from 'react-redux'
-import carrosFavoritos from "../../store/modules/carrosFavoritos/reducer"
 
 const Index = (props) => {
     const idMarca = props.match.params.IdMarca
@@ -11,7 +10,7 @@ const Index = (props) => {
     const idAno = props.match.params.IdAno
     const carro = useCarro(idMarca, idModelo, idAno)
     const marca = useMarcas(idMarca)
-    const carrosfavoritos = useSelector(state => state.carrosFavoritos)
+    const carrosFavoritos = useSelector(state => state.carrosFavoritos)
     const [loading, setLoading] = useState(false)
 
 
@@ -35,9 +34,11 @@ const Index = (props) => {
     const checarFavorito = (carro) => {
         var exist = false
         {
-            carrosfavoritos.map((carroFavorito) => {
-                if (carro.Marca === carroFavorito.Marca) {
-                  exist = true
+            carrosFavoritos.map((carroFavorito) => {
+                if (carro.Modelo === carroFavorito.Modelo
+                    && carro.AnoModelo === carroFavorito.AnoModelo
+                    && carro.Combustivel === carroFavorito.Combustivel) {
+                    exist = true
                 }
             })
         }
@@ -56,13 +57,14 @@ const Index = (props) => {
     }, [verificaSeCarregouArray])
 
     return (
-        <CarroPresentation 
-        carro={carro} 
-        marca={marca} 
-        loading={loading} 
-        fnFavoritar={(e) => favoritarCarro(e, carro)} 
-        fnDesFavoritar={(e) => desFavoritarCarro(e, carro)} 
-        checarFavorito={checarFavorito} />
+        <CarroPresentation
+            carro={carro}
+            marca={marca}
+            loading={loading}
+            fnFavoritar={(e) => favoritarCarro(e, carro)}
+            fnDesFavoritar={(e) => desFavoritarCarro(e, carro)}
+            checarFavorito={checarFavorito}
+        />
     )
 }
 

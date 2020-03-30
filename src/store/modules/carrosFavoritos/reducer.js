@@ -3,7 +3,9 @@ const carrosFavoritos = (state = [], action) => {
         case 'ADD_CARROS_FAVORITOS':
             var ehRepetido = false
             for (const carro of state) {
-                if (carro.Marca === action.carro.Marca) {
+                if (carro.Modelo === action.carro.Modelo
+                    && carro.AnoModelo === action.carro.AnoModelo
+                    && carro.Combustivel === action.carro.Combustivel) {
                     ehRepetido = true;
                 }
             }
@@ -12,7 +14,9 @@ const carrosFavoritos = (state = [], action) => {
                 return [...state, action.carro]
             }
         case 'DEL_CARROS_FAVORITOS':
-            return state.filter((carro) => carro.Marca !== action.carro.Marca)
+            return state.filter((carro) => !(carro.Modelo === action.carro.Modelo
+                && carro.AnoModelo === action.carro.AnoModelo
+                && carro.Combustivel === action.carro.Combustivel))
         default:
             return state
     }

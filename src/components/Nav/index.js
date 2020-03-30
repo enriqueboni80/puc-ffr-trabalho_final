@@ -18,7 +18,7 @@ const Index = () => {
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Carros favoritos ({carrosFavoritos.length})</a>
+                            <a class="nav-link" href="/carrosfavoritos">Carros favoritos ({carrosFavoritos.length})</a>
                         </li>
                     </ul>
                 </div>
