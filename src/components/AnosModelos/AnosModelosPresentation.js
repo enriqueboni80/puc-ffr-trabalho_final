@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import Spinner from "../Utils/spinner"
+
 
 const AnosModelosPresentation = (props) => {
     var anosModelos = props.anosModelos
@@ -8,7 +8,6 @@ const AnosModelosPresentation = (props) => {
     var idModelo = props.idModelo
     var marca = props.marca
     var modelo = props.modelo
-    var loading = props.loading
 
     return (
         <>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import useCarro from "./useCarro"
 import useMarcas from "../Marcas/useMarcas"
 import CarroPresentation from "./CarroPresentation"
+import { useDispatch } from 'react-redux'
 
 const Index = (props) => {
     const idMarca = props.match.params.IdMarca
@@ -11,6 +12,16 @@ const Index = (props) => {
     const marca = useMarcas(idMarca)
     const [loading, setLoading] = useState(false)
 
+    const dispatch = useDispatch();
+    const favoritarCarro = (e, carro) => {
+        e.preventDefault()
+        dispatch({
+            type: 'GUARDA_CARRO',
+            carro
+        })
+    }
+
+    
     const verificaSeCarregouArray = () => {
         if (!(Array.isArray(marca) && Array.isArray(carro))) {
             setLoading(true)
@@ -22,7 +33,7 @@ const Index = (props) => {
     }, [verificaSeCarregouArray])
 
     return (
-        <CarroPresentation carro={carro} marca={marca} loading={loading} />
+        <CarroPresentation carro={carro} marca={marca} loading={loading} fnFavoritar={(e) => favoritarCarro(e, carro)} />
     )
 }
 
