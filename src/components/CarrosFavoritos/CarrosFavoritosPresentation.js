@@ -13,6 +13,7 @@ const CarrosFavoritosPresentation = (props) => {
                                 <th scope="col">#</th>
                                 <th scope="col">Modelo</th>
                                 <th scope="col">Preço</th>
+                                <th scope="col">Referencia</th>
                                 <th scope="col">Acao</th>
                             </tr>
                         </thead>
@@ -25,6 +26,7 @@ const CarrosFavoritosPresentation = (props) => {
                                             <b>{carro.Marca},</b> {carro.Modelo} {carro.AnoModelo} {carro.Combustivel}
                                         </td>
                                         <td>{carro.Valor}</td>
+                                        <td>{carro.MesReferencia}</td>
                                         <td><div onClick={(e) => props.fnDesFavoritar(e ,carro)}><FaRegTrashAlt size={20} /></div></td>
                                     </tr>
                                 )
