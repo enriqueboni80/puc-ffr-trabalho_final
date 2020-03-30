@@ -19,7 +19,15 @@ const Index = (props) => {
     const favoritarCarro = (e, carro) => {
         e.preventDefault()
         dispatch({
-            type: 'CARROS_FAVORITOS',
+            type: 'ADD_CARROS_FAVORITOS',
+            carro
+        })
+    }
+
+    const desFavoritarCarro = (e, carro) => {
+        e.preventDefault()
+        dispatch({
+            type: 'DEL_CARROS_FAVORITOS',
             carro
         })
     }
@@ -48,7 +56,13 @@ const Index = (props) => {
     }, [verificaSeCarregouArray])
 
     return (
-        <CarroPresentation carro={carro} marca={marca} loading={loading} fnFavoritar={(e) => favoritarCarro(e, carro)} checarFavorito={checarFavorito} />
+        <CarroPresentation 
+        carro={carro} 
+        marca={marca} 
+        loading={loading} 
+        fnFavoritar={(e) => favoritarCarro(e, carro)} 
+        fnDesFavoritar={(e) => desFavoritarCarro(e, carro)} 
+        checarFavorito={checarFavorito} />
     )
 }
 

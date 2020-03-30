@@ -15,12 +15,11 @@ const CarroPresentation = (props) => {
                     <div class="col-lg-4 col-md-4 com-sm-4 content">
                         {
                             props.checarFavorito(carro)
-                                ? (<a href="#" onClick={props.fnFavoritar}><IoIosStar size={35} /></a>)
-                                : (<div onClick={props.fnFavoritar}>< IoIosStarOutline size={30} /></div>)
+                                ? (<div onClick={props.fnDesFavoritar}><IoIosStar size={35} /></div>)
+                                : (<div onClick={props.fnFavoritar}>< IoIosStarOutline size={33} /></div>)
                         }
                         <div>{carro.Modelo} ({carro.AnoModelo})</div>
                     </div>
-
                 </div>
             </div>
             <div class="row text-center carro-presentation-container">

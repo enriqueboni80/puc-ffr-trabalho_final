@@ -1,6 +1,6 @@
 const carrosFavoritos = (state = [], action) => {
     switch (action.type) {
-        case 'CARROS_FAVORITOS':
+        case 'ADD_CARROS_FAVORITOS':
             var ehRepetido = false
             for (const carro of state) {
                 if (carro.Marca === action.carro.Marca) {
@@ -11,6 +11,8 @@ const carrosFavoritos = (state = [], action) => {
                 console.log(state)
                 return [...state, action.carro]
             }
+        case 'DEL_CARROS_FAVORITOS':
+            return state.filter((carro) => carro.Marca !== action.carro.Marca)
         default:
             return state
     }
