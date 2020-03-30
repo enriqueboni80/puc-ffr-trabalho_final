@@ -16,7 +16,7 @@ const Index = (props) => {
     const favoritarCarro = (e, carro) => {
         e.preventDefault()
         dispatch({
-            type: 'GUARDA_CARRO',
+            type: 'CARROS_FAVORITOS',
             carro
         })
     }

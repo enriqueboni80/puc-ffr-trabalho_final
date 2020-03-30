@@ -11,9 +11,13 @@ const CarroPresentation = (props) => {
             <div class="row text-center" style={{ marginTop: "25px" }}>
                 <div class="row slug-header">
                     <div class="col-lg-2 col-md-4 col-sm-4 logo"><img src={marca.path_img} /></div>
-                    <div class="col-lg-6 col-md-4 com-sm-4 title">{marca.nome}</div>
-                    <div class="col-lg-4 col-md-4 com-sm-4 content">{carro.Modelo} ({carro.AnoModelo})</div>
-                    <div onClick={props.fnFavoritar}>< IoIosStarOutline /></div>
+                    <div class="col-lg-5 col-md-4 com-sm-4 title">{marca.nome}</div>
+                    <div class="col-lg-4 col-md-4 com-sm-4 content">
+                        <div onClick={props.fnFavoritar}>< IoIosStarOutline style={{ fontSize: "30px" }} /></div>
+                        <div>{carro.Modelo} ({carro.AnoModelo})</div>
+
+                    </div>
+
                 </div>
             </div>
             <div class="row text-center carro-presentation-container">

@@ -10,24 +10,27 @@ import "./global-styles.css"
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route } from "react-router-dom"
 
-import store from './store'
+import { PersistGate } from 'redux-persist/integration/react'
+import { store, persistor } from './store'
 
 export default function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        <BrowserRouter>
-          <Nav />
-          <div class="container">
-            <Route exact path="/" component={Marcas} />
-            <Route exact path="/marcas" component={Marcas} />
-            <Route exact path="/filtro" component={CarsFilter} />
-            <Route exact path="/marcas/:IdMarca/modelos/" component={Modelos} />
-            <Route exact path="/marcas/:IdMarca/modelos/:IdModelo/anos" component={AnosModelos} />
-            <Route exact path="/marcas/:IdMarca/modelos/:IdModelo/anos/:IdAno" component={Carro} />
-          </div>
-          <Footer />
-        </BrowserRouter>
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter>
+            <Nav />
+            <div class="container">
+              <Route exact path="/" component={Marcas} />
+              <Route exact path="/marcas" component={Marcas} />
+              <Route exact path="/filtro" component={CarsFilter} />
+              <Route exact path="/marcas/:IdMarca/modelos/" component={Modelos} />
+              <Route exact path="/marcas/:IdMarca/modelos/:IdModelo/anos" component={AnosModelos} />
+              <Route exact path="/marcas/:IdMarca/modelos/:IdModelo/anos/:IdAno" component={Carro} />
+            </div>
+            <Footer />
+          </BrowserRouter>
+        </PersistGate>
       </Provider>
     </div>
   );
