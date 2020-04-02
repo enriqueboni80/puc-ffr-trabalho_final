@@ -28,7 +28,7 @@ const CarrosFavoritosPresentation = (props) => {
                                             <b>{carro.Valor}</b>
                                             <p style={{ fontSize: "13px" }}>em {carro.MesReferencia}</p>
                                         </td>
-                                        <td><div onClick={(e) => props.fnDesFavoritar(e, carro)}><FaRegTrashAlt size={20} /></div></td>
+                                        <td><div style={{cursor: "pointer"}} onClick={(e) => props.fnDesFavoritar(e, carro)}><FaRegTrashAlt size={20} /></div></td>
                                     </tr>
                                 )
                             })}
